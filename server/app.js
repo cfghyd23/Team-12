@@ -268,19 +268,43 @@ app.get("/paginatedUsers", async (req, res) => {
 
 // Route to retrieve and display the data on a web page
 app.get('/print-data', (req, res) => {
-  User.find({}, (err, users) => {
+  Response.find({}, (err, ResponseDb) => {
     if (err) {
       console.error('Error retrieving data from MongoDB', err);
       res.status(500).send('An error occurred');
     } else {
-      const columns = Object.keys(users[0]._doc);
-      const data = users.map(user => Object.values(user._doc));
+      const columns = Object.keys(ResponseDb[0]._doc);
+      const data = ResponseDb.map(response => Object.values(response._doc));
 
       // Render the view and pass the data to it
       res.render('print-data', { columns, data });
     }
   });
 });
+
+//Route to handle the form submission and add data to the database
+app.post('/print-data', (req, res) => {
+  const { name, email, query, date } = req.body;
+
+  // Create a new User document using the submitted data
+  const newUser = new Response({
+    fname: name,
+    email: email,
+    query: query,
+    date: date
+  });
+
+  // Save the new User document to the database
+  newUser.save((err) => {
+    if (err) {
+      console.error('Error saving data to MongoDB', err);
+      res.status(500).send('An error occurred');
+    } else {
+      res.redirect('/print-data'); // Redirect to the homepage or any other page
+    }
+  });
+});
+
 
 
 
