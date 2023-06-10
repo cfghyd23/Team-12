@@ -7,8 +7,6 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 const bcrypt = require("bcryptjs");
-app.set("view engine", "ejs");
-app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 
 const jwt = require("jsonwebtoken");
@@ -275,6 +273,7 @@ app.get("/paginatedUsers", async (req, res) => {
 })
 
 // Route to retrieve and display the data on a web page
+// Route to retrieve and print the data row-wise
 app.get("/print-data", (req, res) => {
   Response.find({}, (err, ResponseDb) => {
     if (err) {
@@ -284,11 +283,17 @@ app.get("/print-data", (req, res) => {
       const columns = Object.keys(ResponseDb[0]._doc);
       const data = ResponseDb.map(response => Object.values(response._doc));
 
-      // Render the view and pass the data to it
-      res.render('print-data', { columns, data });
+      // // Print data row-wise
+      // console.log('Columns:', columns);
+      // data.forEach(row => {
+      //   console.log('Row:', row);
+      // });
+      res.send(data);
+      // res.send('Data printed in the console. Check your server logs.');
     }
   });
 });
+
 
 //Route to handle the form submission and add data to the database
 app.post("/print-data", (req, res) => {
