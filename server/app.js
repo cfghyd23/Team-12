@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
+const path = require('path');
+
 const mongoose = require("mongoose");
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 const bcrypt = require("bcryptjs");
 app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 
 const jwt = require("jsonwebtoken");
@@ -28,9 +31,12 @@ mongoose
 
 require("./userDetails");
 require("./imageDetails");
+require("./response");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
+const Response = mongoose.model("ResponseDb");
+
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password, userType } = req.body;
 
@@ -259,3 +265,22 @@ app.get("/paginatedUsers", async (req, res) => {
   results.result = allUser.slice(startIndex, lastIndex);
   res.json(results)
 })
+
+// Route to retrieve and display the data on a web page
+app.get('/print-data', (req, res) => {
+  User.find({}, (err, users) => {
+    if (err) {
+      console.error('Error retrieving data from MongoDB', err);
+      res.status(500).send('An error occurred');
+    } else {
+      const columns = Object.keys(users[0]._doc);
+      const data = users.map(user => Object.values(user._doc));
+
+      // Render the view and pass the data to it
+      res.render('print-data', { columns, data });
+    }
+  });
+});
+
+
+
