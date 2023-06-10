@@ -6,6 +6,11 @@ import Header from "../components/HeaderBoard";
 import Search from "../components/SearchBoard"; 
 
 const AppIntial = () => {
+    const logOut = () => {
+        window.localStorage.clear();
+        window.location.href = "./sign-in";
+      };
+    
     const [filterKeywords, setfilterKeywords] = useState([]);
 
   // const setSearchKeyword = (data) => {

@@ -95,10 +95,11 @@ export default function AdminHome({ userData }) {
 
   }
 
+  const [sideNavState, setSideNavState] = useState(-1);
   return (<>
     
    
-        <Sidebar/>
+        <Sidebar sideNavState setSideNavState />
         {/* <table style={{ width: 500 }}>
           <tr>
             <th>Name</th>
@@ -142,10 +143,13 @@ export default function AdminHome({ userData }) {
           forcePage={currentPage.current-1}
         /> */}
         {/* <input placeholder="Limit" onChange={e=>setLimit(e.target.value)}/> */}
-        <button onClick={changeLimit}>Set Limit</button>
+        {/* <button onClick={changeLimit}>Set Limit</button>
         <button onClick={logOut} className="btn btn-primary">
           Log Out
-        </button>
+        </button> */}
+        {if(sideNavState === -1){
+          <Compo
+        }}
      
     </>
   );

@@ -6,9 +6,10 @@ import Search from './SearchBoard'
 const JobDashboard = () => {
   return (
     <div>
+    <Search/>
       <Job/>
       <JobsBoard/>
-      <Search/>
+      
     </div>
   )
 }

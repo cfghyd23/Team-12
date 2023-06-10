@@ -1,28 +1,59 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-const Sidebar = () => {
-    return (
-         <div className="col-md-3 col-lg-2 sidebar-offcanvas pl-0" id="sidebar" role="navigation" style={{backgroundColor:"#e9ecef"}}>
-            <ul className="nav flex-column sticky-top pl-0 pt-5 p-3 mt-3 ">
-                <li className="nav-item mb-2 mt-3"><Link className="nav-link text-secondary" to="/"><h5>RainBow Homes</h5></Link></li>
-                <li className="nav-item mb-2 "><Link className="nav-link text-secondary" to="/jobdetails"><i className="fas fa-user font-weight-bold"></i> <span className="ml-3">Jobs</span></Link></li>
-                <li className="nav-item mb-2">
-                    <Link className="nav-link text-secondary" to="/finance" data-toggle="collapse" data-target="#submenu1"><i className="far fa-file-word font-weight-bold"></i> <span className="ml-3"> Finance</span></Link>
-                    <ul className="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                       <li className="nav-item mb-2 "><Link className="nav-link text-secondary" to="/userdetails"><i className="fas fa-book-reader"></i>User Details </Link></li>
-                       <li className="nav-item mb-2 "><Link className="nav-link text-secondary" to=""> <i className="fas fa-book-medical"></i> File Report </Link></li>
-                    </ul>
-                </li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#"><i className="far fa-chart-bar font-weight-bold"></i> <span className="ml-3">Analytics</span></Link></li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#"><i className="fas fa-file-export font-weight-bold"></i><span className="ml-3">Export</span></Link></li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#"><i className="fas fa-tablet-alt font-weight-bold"></i><span className="ml-3">Snippets</span></Link></li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#"><i className="fas fa-atom font-weight-bold"></i> <span className="ml-3">Flex</span></Link></li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#"><i className="far fa-folder font-weight-bold"></i> <span className="ml-3">Layouts</span></Link></li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#">Templates</Link></li>
-                <li className="nav-item mb-2"><Link className="nav-link text-secondary" to="#">Themes</Link></li>
+const Sidebar = ({sideNavState, setSideNavState}) => {
+    const logOut = () => {
+        window.localStorage.clear();
+        window.location.href = "./sign-in";
+      };
+   
+        return (
+    
+            <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style={{width: "280px", height: "100vh"}}>
+            <Link to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <span className="fs-4">Rainbow Homes</span>
+            </Link>
+            
+            <ul className="nav nav-pills flex-column mb-auto">
+              <li className="nav-item">
+                <div  onClick={() => {setSideNavState(1)}} className="nav-link active" aria-current="page">
+                  Housing
+                </div>
+              </li>
+              <li>
+              <div  onClick={() => {setSideNavState(1)}} className="nav-link text-white">
+                  Jobs
+                </div>
+              </li>
+              <li>
+              <div  onClick={() => {setSideNavState(2)}} className="nav-link text-white">
+                  Finance
+                </div>
+              </li>
+              <li>
+              <div  onClick={() => {setSideNavState(3)}} className="nav-link text-white">
+                  Health
+                </div>
+              </li>
+              <li>
+              <div  onClick={() => {setSideNavState(4)}} className="nav-link text-white">
+                  Response
+                </div>
+              </li>
             </ul>
-       </div>
-    )
-}
+            <div className="dropdown">
+              <Link to="/" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <strong>Hi, Akshat</strong>
+              </Link>
+              <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
+                <li><Link className="dropdown-item" to="#" onClick={logOut}>Sign out</Link></li>
+              </ul>
+            </div>
+          </div>
+    
+        )
+    }
+     
+   
+
  
 export default Sidebar
