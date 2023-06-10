@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from 'react-paginate';
 import { useRef } from "react";
 
-import Sidebar from "./Sidebar";
+import SideBar from "./Sidebar";
 export default function AdminHome({ userData }) {
 
   //setting state
@@ -99,7 +99,11 @@ export default function AdminHome({ userData }) {
   return (<>
     
    
-        <Sidebar sideNavState setSideNavState />
+        <SideBar>
+        <div  onClick={() => {setSideNavState(1)}}>
+        </div>
+        </SideBar>
+        
         {/* <table style={{ width: 500 }}>
           <tr>
             <th>Name</th>
@@ -147,9 +151,7 @@ export default function AdminHome({ userData }) {
         <button onClick={logOut} className="btn btn-primary">
           Log Out
         </button> */}
-        {if(sideNavState === -1){
-          <Compo
-        }}
+        
      
     </>
   );
