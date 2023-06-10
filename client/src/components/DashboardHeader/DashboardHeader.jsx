@@ -1,8 +1,8 @@
 import React from 'react';
-
+// import  {IoMdNotifications} from 'react-icons/fa'
+// import  {FiSettings} from 'react-icons/fa'
 import './DashboardHeader.css';
-import NotificationIcon from '../../assets/icons/notification.svg';
-import SettingsIcon from '../../assets/icons/settings.svg';
+
 
 function DashboardHeader ({ btnText, onClick }) {
     return(
@@ -13,11 +13,11 @@ function DashboardHeader ({ btnText, onClick }) {
 
             <div className='dashbord-header-right'>
                 <img 
-                    src={NotificationIcon}
+                    // src={IoMdNotifications}
                     alt='notification-icon'
                     className='dashbord-header-icon' />
                 <img 
-                    src={SettingsIcon}
+                    // src={FiSettings}
                     alt='settings-icon'
                     className='dashbord-header-icon' />
                 <img
