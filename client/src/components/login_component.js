@@ -37,7 +37,6 @@ export default function Login() {
   return (
     <div className="auth-wrapper">
       <div className="auth-inner">
-        <img src="https://www.chittorgarh.com/images/ipo/rainbow-foundations-logo.png" height={40} width={50}></img>
         <form onSubmit={handleSubmit}>
           <h3>Sign In</h3>
 
