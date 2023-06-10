@@ -32,10 +32,14 @@ mongoose
 require("./userDetails");
 require("./imageDetails");
 require("./response");
+require("./finance");
+require("./cardSchema");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
 const Response = mongoose.model("ResponseDb");
+const Finance = mongoose.model("FinanceDb");
+const Card = mongoose.model("CardSchemaDb");
 
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password, userType } = req.body;
@@ -267,7 +271,7 @@ app.get("/paginatedUsers", async (req, res) => {
 })
 
 // Route to retrieve and display the data on a web page
-app.get('/print-data', (req, res) => {
+app.get("/print-data", (req, res) => {
   Response.find({}, (err, ResponseDb) => {
     if (err) {
       console.error('Error retrieving data from MongoDB', err);
@@ -283,7 +287,7 @@ app.get('/print-data', (req, res) => {
 });
 
 //Route to handle the form submission and add data to the database
-app.post('/print-data', (req, res) => {
+app.post("/print-data", (req, res) => {
   const { name, email, query, date } = req.body;
 
   // Create a new User document using the submitted data
@@ -304,6 +308,34 @@ app.post('/print-data', (req, res) => {
     }
   });
 });
+
+app.get("/admin/finance", async(req,res)=>{
+  try {
+    const allUser = await Finance.find({});
+    res.send({ status: "ok", data: allUser });
+  } catch (error) {
+    console.log(error);
+  }
+    
+});
+
+// POST route for creating a new card
+app.post("/admin/finance", (req, res) => {
+  const { title, description } = req.body;
+
+  const newCard = new Card({ title, description });
+
+  newCard.save((err, savedCard) => {
+    if (err) {
+      console.error('Error saving card:', err);
+      res.status(500).send('Error saving card');
+    } else {
+      res.status(201).json(savedCard);
+    }
+  });
+});
+
+
 
 
 
