@@ -5,7 +5,7 @@ const Sidebar = () => {
          <div className="col-md-3 col-lg-2 sidebar-offcanvas pl-0" id="sidebar" role="navigation" style={{backgroundColor:"#e9ecef"}}>
             <ul className="nav flex-column sticky-top pl-0 pt-5 p-3 mt-3 ">
                 <li className="nav-item mb-2 mt-3"><Link className="nav-link text-secondary" to="/"><h5>RainBow Homes</h5></Link></li>
-                <li className="nav-item mb-2 "><Link className="nav-link text-secondary" to="/eduaction"><i className="fas fa-user font-weight-bold"></i> <span className="ml-3">Education</span></Link></li>
+                <li className="nav-item mb-2 "><Link className="nav-link text-secondary" to="/jobdetails"><i className="fas fa-user font-weight-bold"></i> <span className="ml-3">Jobs</span></Link></li>
                 <li className="nav-item mb-2">
                     <Link className="nav-link text-secondary" to="/finance" data-toggle="collapse" data-target="#submenu1"><i className="far fa-file-word font-weight-bold"></i> <span className="ml-3"> Finance</span></Link>
                     <ul className="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
