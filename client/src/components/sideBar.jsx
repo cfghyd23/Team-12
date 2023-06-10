@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-const Sidebar = ({sideNavState, setSideNavState}) => {
+const Sidebar = ({sideNavState, setSideNavSta}) => {
     const logOut = () => {
         window.localStorage.clear();
         window.location.href = "./sign-in";
@@ -15,29 +15,29 @@ const Sidebar = ({sideNavState, setSideNavState}) => {
             
             <ul className="nav nav-pills flex-column mb-auto">
               <li className="nav-item">
-                <div  onClick={() => {setSideNavState(1)}} className="nav-link active" aria-current="page">
-                  Housing
-                </div>
+                <Link to="/" className="nav-link active" aria-current="page">
+                  Home
+                </Link>
               </li>
               <li>
-              <div  onClick={() => {setSideNavState(1)}} className="nav-link text-white">
+                <Link to="/jobdetails" className="nav-link text-white">
                   Jobs
-                </div>
+                </Link>
               </li>
               <li>
-              <div  onClick={() => {setSideNavState(2)}} className="nav-link text-white">
+                <Link to="/finance" className="nav-link text-white">
                   Finance
-                </div>
+                </Link>
               </li>
               <li>
-              <div  onClick={() => {setSideNavState(3)}} className="nav-link text-white">
-                  Health
-                </div>
+                <Link to="/" className="nav-link text-white">
+                  Products
+                </Link>
               </li>
               <li>
-              <div  onClick={() => {setSideNavState(4)}} className="nav-link text-white">
-                  Response
-                </div>
+                <Link to="/" className="nav-link text-white">
+                  Customers
+                </Link>
               </li>
             </ul>
             <div className="dropdown">

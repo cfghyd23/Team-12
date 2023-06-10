@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, ButtonGroup } from "@material-ui/core";
 import "./Finance.css";
-import Sidebar from "../Sidebar";
+import SideBar from "../Sidebar";
 const Career = () => {
 
   const [funds, setFunds] = useState(myfund)
@@ -11,8 +11,9 @@ const Career = () => {
   
 
   return (
+    <SideBar>
     <div className="funds">
-    <Sidebar/>
+    
 
       <ButtonGroup className="fund">
         
@@ -33,7 +34,7 @@ const Career = () => {
         }
       </div></div>
   
-
+</SideBar>
 
   )
 
