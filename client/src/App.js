@@ -9,6 +9,7 @@ import UserDetails from "./components/userDetails";
 import ImageUpload from "./components/imageUpload.";
 import JobDashboard from "./components/JobDashboard";
 import AppIntial from "./components/AppIntial";
+import Finance from './components/Finance/Finance'
 function App() {
   
   const isLoggedIn = window.localStorage.getItem("loggedIn");
@@ -28,6 +29,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/userDetails" element={<UserDetails />} />
           <Route path="/jobdetails" element={<JobDashboard />} />
+          <Route path="/finance" element={<Finance />} />
         </Routes>
         {/* <ImageUpload/> */}
       </div>
