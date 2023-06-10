@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-const Sidebar = ({sideNavState, setSideNavSta}) => {
+
+const SideBar = ({sideNavState, setSideNavSta}) => {
     const logOut = () => {
         window.localStorage.clear();
         window.location.href = "./sign-in";
@@ -56,4 +57,4 @@ const Sidebar = ({sideNavState, setSideNavSta}) => {
    
 
  
-export default Sidebar
+export default SideBar

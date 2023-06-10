@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from 'react-paginate';
 import { useRef } from "react";
 
-import SideBar from "./Sidebar";
+import SideBar from "./SideBar";
 export default function AdminHome({ userData }) {
 
   //setting state

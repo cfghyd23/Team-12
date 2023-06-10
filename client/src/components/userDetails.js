@@ -3,7 +3,7 @@ import AdminHome from "./adminHome";
 
 import UserHome from "./userHome";
 
-export default function UserDetails() {
+export default function UserDetails({isAdminLogin, setIsAdminLogin}) {
   const [userData, setUserData] = useState("");
   const [admin, setAdmin] = useState(false);
 
@@ -35,6 +35,7 @@ export default function UserDetails() {
           window.location.href = "./sign-in";
         }
       });
+      isAdminLogin = admin;
   }, []);
 
   return admin ? <AdminHome />: <UserHome userData={userData} />;
