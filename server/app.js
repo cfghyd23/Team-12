@@ -326,15 +326,16 @@ app.get("/user/finance", async(req,res)=>{
 // POST route for creating a new card
 app.post("/admin/finance", (req, res) => {
   const { title, description } = req.body;
-
-  const newCard = new Card({ title, description });
-
-  newCard.save((err, savedCard) => {
+  const newUser = new Finance({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
@@ -352,12 +353,16 @@ app.get("/user/jobs", async(req,res)=>{
 
 app.post("/admin/jobs", async (req, res) => {
   const { title, description } = req.body;
-  Jobs.save((err, savedCard) => {
+  const newUser = new Jobs({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
@@ -366,12 +371,16 @@ app.post("/admin/jobs", async (req, res) => {
 
 app.post("/admin/health", async (req, res) => {
   const { title, description } = req.body;
-  Health.save((err, savedCard) => {
+  const newUser = new Health({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
@@ -387,12 +396,16 @@ app.get("/user/health", async(req,res)=>{
 
 app.post("/admin/housing", async(req,res)=>{
   const { title, description } = req.body;
-  Housing.save((err, savedCard) => {
+  const newUser = new Housing({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
