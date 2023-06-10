@@ -33,13 +33,17 @@ require("./userDetails");
 require("./imageDetails");
 require("./response");
 require("./finance");
-require("./cardSchema");
+require("./health");
+require("./housing");
+require("./jobs");
 
 const User = mongoose.model("UserInfo");
 const Images = mongoose.model("ImageDetails");
 const Response = mongoose.model("ResponseDb");
 const Finance = mongoose.model("FinanceDb");
-const Card = mongoose.model("CardSchemaDb");
+const Housing = mongoose.model("HousingDb");
+const Health = mongoose.model("HealthDb");
+const Jobs = mongoose.model("JobDb");
 
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password, userType } = req.body;
@@ -309,7 +313,7 @@ app.post("/print-data", (req, res) => {
   });
 });
 
-app.get("/admin/finance", async(req,res)=>{
+app.get("/user/finance", async(req,res)=>{
   try {
     const allUser = await Finance.find({});
     res.send({ status: "ok", data: allUser });
@@ -335,6 +339,72 @@ app.post("/admin/finance", (req, res) => {
   });
 });
 
+
+app.get("/user/jobs", async(req,res)=>{
+  try {
+    const allUser = await Jobs.find({});
+    res.send({ status: "ok", data: allUser });
+  } catch (error) {
+    console.log(error);
+  }
+    
+})
+
+app.post("/admin/jobs", async (req, res) => {
+  const { title, description } = req.body;
+  Jobs.save((err, savedCard) => {
+    if (err) {
+      console.error('Error saving card:', err);
+      res.status(500).send('Error saving card');
+    } else {
+      res.status(201).json(savedCard);
+    }
+  });
+});
+
+
+
+app.post("/admin/health", async (req, res) => {
+  const { title, description } = req.body;
+  Health.save((err, savedCard) => {
+    if (err) {
+      console.error('Error saving card:', err);
+      res.status(500).send('Error saving card');
+    } else {
+      res.status(201).json(savedCard);
+    }
+  });
+});
+
+app.get("/user/health", async(req,res)=>{
+  try {
+    const allUser = await Health.find({});
+    res.send({ status: "ok", data: allUser });
+  } catch (error) {
+    console.log(error);
+  } 
+});
+
+app.post("/admin/housing", async(req,res)=>{
+  const { title, description } = req.body;
+  Housing.save((err, savedCard) => {
+    if (err) {
+      console.error('Error saving card:', err);
+      res.status(500).send('Error saving card');
+    } else {
+      res.status(201).json(savedCard);
+    }
+  });
+});
+
+app.get("/user/housing", async(req,res)=>{
+  try {
+    const allUser = await Housing.find({});
+    res.send({ status: "ok", data: allUser });
+  } catch (error) {
+    console.log(error);
+  } 
+});
 
 
 
