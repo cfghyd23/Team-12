@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data Printing</title>
+</head>
+<body>
+  <h1>Data Printing</h1>
+
+  <h2>Columns:</h2>
+  <ul>
+    <% columns.forEach(function(column) { %>
+      <li><%= column %></li>
+    <% }); %>
+  </ul>
+
+  <h2>Data:</h2>
+  <table>
+    <thead>
+      <tr>
+        <% columns.forEach(function(column) { %>
+          <th><%= column %></th>
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(function(row) { %>
+        <tr>
+          <% row.forEach(function(value) { %>
+            <td><%= value %></td>
+          <% }); %>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>
