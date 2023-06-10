@@ -3,7 +3,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from 'react-paginate';
 import { useRef } from "react";
-import DashboardHeader from "./DashboardHeader/DashboardHeader";
+
 import Sidebar from "./Sidebar";
 export default function AdminHome({ userData }) {
 
