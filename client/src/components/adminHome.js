@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactPaginate from 'react-paginate';
 import { useRef } from "react";
 import DashboardHeader from "./DashboardHeader/DashboardHeader";
+import Sidebar from "./Sidebar";
 export default function AdminHome({ userData }) {
 
   //setting state
@@ -95,11 +96,10 @@ export default function AdminHome({ userData }) {
   }
 
   return (<>
-    <DashboardHeader/>
-    <div className="auth-wrapper" style={{ height: "auto" }}>
-      <div className="auth-inner" style={{ width: "auto" }}>
-        <h3>Welcom Admin</h3>
-        <table style={{ width: 500 }}>
+    
+   
+        <Sidebar/>
+        {/* <table style={{ width: 500 }}>
           <tr>
             <th>Name</th>
             <th>Email</th>
@@ -118,11 +118,11 @@ export default function AdminHome({ userData }) {
                     onClick={() => deleteUser(i._id, i.fname)}
                   />
                 </td>
-              </tr>
+              </tr>0  `
             );
           })}
-        </table>
-        <ReactPaginate
+        </table> */}
+        {/* <ReactPaginate
           breakLabel="..."
           nextLabel="next >"
           onPageChange={handlePageClick}
@@ -140,14 +140,13 @@ export default function AdminHome({ userData }) {
           nextLinkClassName="page-link"
           activeClassName="active"
           forcePage={currentPage.current-1}
-        />
-        <input placeholder="Limit" onChange={e=>setLimit(e.target.value)}/>
+        /> */}
+        {/* <input placeholder="Limit" onChange={e=>setLimit(e.target.value)}/> */}
         <button onClick={changeLimit}>Set Limit</button>
         <button onClick={logOut} className="btn btn-primary">
           Log Out
         </button>
-      </div>
-    </div>
+     
     </>
   );
 }
