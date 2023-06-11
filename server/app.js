@@ -7,8 +7,6 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 const bcrypt = require("bcryptjs");
-app.set("view engine", "ejs");
-app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: false }));
 
 const jwt = require("jsonwebtoken");
@@ -288,7 +286,12 @@ app.get("/paginatedUsers", async (req, res) => {
 })
 
 // Route to retrieve and display the data on a web page
+<<<<<<< HEAD
 app.get("/get-data", (req, res) => {
+=======
+// Route to retrieve and print the data row-wise
+app.get("/print-data", (req, res) => {
+>>>>>>> 2a65e665ffb389b92839858eaf8a7a4cb4ad1e79
   Response.find({}, (err, ResponseDb) => {
     if (err) {
       console.error('Error retrieving data from MongoDB', err);
@@ -307,6 +310,7 @@ app.get("/get-data", (req, res) => {
     }
   });
 });
+
 
 //Route to handle the form submission and add data to the database
 app.post("/print-data", (req, res) => {
@@ -344,15 +348,16 @@ app.get("/user/finance", async(req,res)=>{
 // POST route for creating a new card
 app.post("/admin/finance", (req, res) => {
   const { title, description } = req.body;
-
-  const newCard = new Card({ title, description });
-
-  newCard.save((err, savedCard) => {
+  const newUser = new Finance({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
@@ -370,12 +375,16 @@ app.get("/user/jobs", async(req,res)=>{
 
 app.post("/admin/jobs", async (req, res) => {
   const { title, description } = req.body;
-  Jobs.save((err, savedCard) => {
+  const newUser = new Jobs({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
@@ -384,12 +393,16 @@ app.post("/admin/jobs", async (req, res) => {
 
 app.post("/admin/health", async (req, res) => {
   const { title, description } = req.body;
-  Health.save((err, savedCard) => {
+  const newUser = new Health({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
@@ -405,12 +418,16 @@ app.get("/user/health", async(req,res)=>{
 
 app.post("/admin/housing", async(req,res)=>{
   const { title, description } = req.body;
-  Housing.save((err, savedCard) => {
+  const newUser = new Housing({
+    title: title,
+    description: description
+  });
+  newUser.save((err) => {
     if (err) {
       console.error('Error saving card:', err);
       res.status(500).send('Error saving card');
     } else {
-      res.status(201).json(savedCard);
+      res.send('Data saved successfully');
     }
   });
 });
