@@ -8,16 +8,14 @@ const Housing = () => {
 		{ id: '2', name: "Microsoft", description: "", seats: "", group: "" },
 		{ id: '3', name: "Microsoft", description: "", seats: "", group: "" },
 		{ id: '4', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '5', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '6', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '7', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '8', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '9', name: "Microsoft", description: "", seats: "", group: "" },
+		
+		
 	];
 
 	return (
+		<>
+		<SideBar />
 		<div style={{display:"flex"}}>
-			<SideBar />
 			<div className="funds">
 				<div className="crop-content">
 					{myfund.map(function(fund){
@@ -25,8 +23,8 @@ const Housing = () => {
 						<div key = {fund.id} className="card">
 							<p id="title">{fund.name}</p>
 							<p id="description">{fund.description}</p>
-							<p id="seats">{fund.seats}</p>
-							<p id="age-group">{fund.group}</p>
+							<p id="seats">Seats Left : {fund.seats}</p>
+							<p id="age-group">Group ID : {fund.group}</p>
 						</div>
 						)
 					}
@@ -34,6 +32,7 @@ const Housing = () => {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 };
 

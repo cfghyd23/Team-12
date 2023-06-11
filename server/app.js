@@ -202,6 +202,19 @@ app.post("/reset-password/:id/:token", async (req, res) => {
     res.json({ status: "Something Went Wrong" });
   }
 });
+const peopleSchema = new mongoose.Schema({
+  name: String,
+  location: String
+});
+const People = mongoose.model('People', peopleSchema);
+app.get('/user/people you may know', (req, res) => {
+  People.aggregate([
+    { $group: { _id: '$location', people: { $push: '$name' } } }
+  ])
+    .then(groupedPeople => res.json(groupedPeople))
+    .catch(error => res.status(500).json({ error: 'An error occurred' }));
+});
+
 
 app.get("/getAllUser", async (req, res) => {
   try {
@@ -275,7 +288,7 @@ app.get("/paginatedUsers", async (req, res) => {
 })
 
 // Route to retrieve and display the data on a web page
-app.get("/print-data", (req, res) => {
+app.get("/get-data", (req, res) => {
   Response.find({}, (err, ResponseDb) => {
     if (err) {
       console.error('Error retrieving data from MongoDB', err);
@@ -284,8 +297,13 @@ app.get("/print-data", (req, res) => {
       const columns = Object.keys(ResponseDb[0]._doc);
       const data = ResponseDb.map(response => Object.values(response._doc));
 
-      // Render the view and pass the data to it
-      res.render('print-data', { columns, data });
+      // // Print data row-wise
+      // console.log('Columns:', columns);
+      // data.forEach(row => {
+      //   console.log('Row:', row);
+      // });
+      res.send(data);
+      // res.send('Data printed in the console. Check your server logs.');
     }
   });
 });

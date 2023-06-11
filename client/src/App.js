@@ -8,9 +8,11 @@ import SignUp from "./components/signup_component";
 import UserDetails from "./components/userDetails";
 import Finance from './components/Finance/Finance'
 import Health from './components/Health/Health'
-// import PRDetails from './components/PRDetails/PRDetails'
+import PRDetails from './components/PRDetails/PRDetails'
 import Jobs from './components/Jobs/Jobs'
 import Housing from './components/Housing/Housing'
+import SendMessage from "./components/SendMessage/SendMessage";
+import PendingRequest from "./components/PendingResources";
 
 function App() {
   
@@ -34,7 +36,10 @@ function App() {
           <Route path="/jobdetails" element={<Jobs isAdminLogin/>} />
           <Route path="/finance" element={<Finance isAdminLogin/>} />
           <Route path="/health" element={<Health isAdminLogin />} />
-          {/* <Route path="/requests" element={<PRDetails isAdminLogin/>} /> */}
+          <Route path="/housing" element={<Housing isAdminLogin/>} />
+          <Route path="/requests" element={<PRDetails isAdminLogin/>} />
+          <Route path="/sendmessage" element={<SendMessage isAdminLogin/>} />
+          <Route path="/pendingrequest" element={<PendingRequest isAdminLogin/>} />
         </Routes>
         {/* <ImageUpload/> */}
       </div>

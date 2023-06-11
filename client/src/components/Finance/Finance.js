@@ -4,19 +4,16 @@ import "./FinStyles.css";
 import SideBar from "../SideBar";
 const Finance = () => {
 	const myfund = [
-		{ id: '1', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '2', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '3', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '4', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '5', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '6', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '7', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '8', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '9', name: "Microsoft", description: "", seats: "", group: "" },
+		{ id: '1', name: "Microsoft", description: "A great learning experience for all age groups across all financial verticals", seats: "10", group: "1" },
+		{ id: '2', name: "SalesForce", description: "A great learning experience for all age groups across all financial verticals", seats: "20", group: "1" },
+		{ id: '3', name: "Internshala", description: "A great learning experience for all age groups across all financial verticals", seats: "30", group: "1" },
+		{ id: '4', name: "JP Morgan Chase", description: "A great learning experience for all age groups across all financial verticals", seats: "40", group: "1" },
+		
 	];
 
 	return (
-		<div>
+		
+		<div style={{display:"flex"}}>
 			<SideBar />
 			<div className="funds">
 				<div className="crop-content">

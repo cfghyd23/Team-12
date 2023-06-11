@@ -8,11 +8,8 @@ const Health = () => {
 		{ id: '2', name: "Microsoft", description: "", seats: "", group: "" },
 		{ id: '3', name: "Microsoft", description: "", seats: "", group: "" },
 		{ id: '4', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '5', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '6', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '7', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '8', name: "Microsoft", description: "", seats: "", group: "" },
-		{ id: '9', name: "Microsoft", description: "", seats: "", group: "" },
+		
+		
 	];
 
 	return (

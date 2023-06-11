@@ -38,6 +38,7 @@ export default function Login() {
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form onSubmit={handleSubmit}>
+        {/* <img src={"./download.jpeg"} /> */}
           <h3>Sign In</h3>
 
           <div className="mb-3">
